@@ -1,7 +1,11 @@
-exports.index = (req, rest) => {
-    rest.render('login');
+const Login = require('../models/LoginModel');
+
+exports.index = (req, res) => {
+    res.render('login');
 };
 
 exports.register = function (req, res) {
-    res.send('Olá')
+    const login = new Login(req.body);
+    login.register();
+    res.send(login.erros);
 };
