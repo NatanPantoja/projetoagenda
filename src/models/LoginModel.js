@@ -12,7 +12,7 @@ const LoginModel = mongoose.model('Login', LoginSchema);
 // Essa parte é para validação do cadastro
 class Login {
   constructor(body) {
-    this.body = body;
+    this.body = body || {};
     this.errors = [];
     this.user = null;
   }
@@ -36,7 +36,7 @@ class Login {
 
   cleanUp() {
     for (const key in this.body) {
-      if (typeof this.body[key] !== 'string') { // se não form um string vou converte em uma string vazia
+      if (typeof this.body[key] !== 'string') {
         this.body[key] = '';
       }
     }
